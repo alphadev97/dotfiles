@@ -23,7 +23,7 @@ local opts = {
 		lazy = true,
 	},
 	install = {
-		colorscheme = { "carbonfox" },
+		colorscheme = { "gruvbox" },
 	},
 	rtp = {
 		disabled_plugins = {
