@@ -1,49 +1,20 @@
-local opt = vim.opt
-
--- Tab / Indentation
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.softtabstop = 2
-opt.expandtab = true
-opt.smartindent = true
-opt.wrap = false
-
--- Search
-opt.incsearch = true
-opt.ignorecase = true
-opt.smartcase = true
-opt.hlsearch = false
-
--- Appearance
-opt.number = true
-opt.relativenumber = true
-opt.termguicolors = true
-opt.colorcolumn = "100"
-opt.signcolumn = "yes"
-opt.cmdheight = 1
-opt.scrolloff = 10
-opt.completeopt = "menuone,noinsert,noselect"
-
--- Behaviour
-opt.hidden = true
-opt.errorbells = false
-opt.swapfile = false
-opt.backup = false
-opt.undodir = vim.fn.expand("~/.vim/undodir")
-opt.undofile = true
-opt.backspace = "indent,eol,start"
-opt.splitright = true
-opt.splitbelow = true
-opt.autochdir = false
-opt.iskeyword:append("-")
-opt.mouse:append("a")
-opt.clipboard:append("unnamedplus")
-opt.modifiable = true
-opt.guicursor =
-	"n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
-opt.encoding = "UTF-8"
-
--- Hightlight on yank
+vim.cmd("set expandtab")
+vim.cmd("set tabstop=2")
+vim.cmd("set softtabstop=2")
+vim.cmd("set shiftwidth=2")
+vim.g.mapleader = " "
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.termguicolors = true
+vim.opt.colorcolumn = "100"
+vim.opt.mouse = 'a'
+vim.schedule(function()
+  vim.opt.clipboard = 'unnamedplus'
+end)
+vim.opt.breakindent = true
+vim.opt.cursorline = true
+vim.opt.scrolloff = 10
+vim.opt.termguicolors = true
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
