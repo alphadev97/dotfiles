@@ -3,7 +3,7 @@ return {
   lazy = false,
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
-    local theme = require("lualine.themes.gruvbox")
+    local theme = require("lualine.themes.dracula")
 
     theme.normal.c.bg = nil
     theme.insert.c.bg = nil

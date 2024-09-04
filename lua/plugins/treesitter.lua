@@ -16,6 +16,7 @@ local config = function()
 			"dockerfile",
 			"gitignore",
 			"python",
+      "go",
 		},
 		auto_install = true,
 		highlight = {
