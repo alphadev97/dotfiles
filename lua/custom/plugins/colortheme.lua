@@ -1,19 +1,17 @@
 return {
   {
-    "folke/tokyonight.nvim",
+    'folke/tokyonight.nvim',
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-     
-
-      require("tokyonight").setup({
+      require('tokyonight').setup {
         transparent = true,
         styles = {
-          sidebars = "transparent",
-          floats = "transparent",
-        }
-      })
+          sidebars = 'transparent',
+          floats = 'transparent',
+        },
+      }
       -- load the colorscheme here
-      vim.cmd([[colorscheme tokyonight]])
+      vim.cmd [[colorscheme tokyonight]]
     end,
   },
 }
