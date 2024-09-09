@@ -4,14 +4,14 @@ return {
 	priority = 1000,
 	config = function()
 		require("catppuccin").setup({
-			transparent_background = true, 
-			term_colors = true, 
+			transparent_background = true,
+			term_colors = true,
 			integrations = {
 				nvimtree = true,
 				telescope = true,
 				lsp_saga = true,
 			},
 		})
-		vim.cmd.colorscheme("catppuccin")
+		vim.cmd.colorscheme("catppuccin-mocha")
 	end,
 }
