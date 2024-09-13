@@ -2,7 +2,6 @@ return {
 	"ellisonleao/gruvbox.nvim",
 	priority = 1000,
 	config = function()
-		-- Set up the initial colorscheme with transparent mode enabled
 		require("gruvbox").setup({
 			transparent_mode = true,
 			contrast = "hard",
