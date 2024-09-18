@@ -1,14 +1,19 @@
 return {
-	"rose-pine/neovim",
-	name = "rose-pine",
+	"EdenEast/nightfox.nvim",
+	name = "nightfox",
 	priority = 1000,
 	config = function()
-		require("rose-pine").setup({
-			disable_background = true, -- This will make the background transparent
-			disable_float_background = true, -- Optional: makes floating windows transparent as well
+		-- Load the nightfox theme with specific settings
+		require("nightfox").setup({
+			options = {
+				transparent = true, -- Enables transparent background
+				styles = {
+					comments = "italic", -- You can customize other style options like this
+				},
+			},
 		})
 
-		-- Set the colorscheme to rose-pine
-		vim.cmd("colorscheme rose-pine")
+		-- Set the colorscheme to carbonfox variant of nightfox
+		vim.cmd("colorscheme carbonfox")
 	end,
 }
