@@ -1,44 +1,14 @@
 return {
-	"ellisonleao/gruvbox.nvim",
+	"rose-pine/neovim",
+	name = "rose-pine",
 	priority = 1000,
 	config = function()
-		require("gruvbox").setup({
-			transparent_mode = true,
-			contrast = "hard",
-			overrides = {
-				Normal = { bg = "none" },
-				NormalFloat = { bg = "none" },
-			},
+		require("rose-pine").setup({
+			disable_background = true, -- This will make the background transparent
+			disable_float_background = true, -- Optional: makes floating windows transparent as well
 		})
 
-		vim.cmd.colorscheme("gruvbox")
-
-		local function toggle_background()
-			if vim.g.transparent_mode then
-				vim.g.transparent_mode = false
-				require("gruvbox").setup({
-					transparent_mode = false,
-					overrides = {
-						Normal = { bg = "#141414" },
-						NormalFloat = { bg = "#141414" },
-					},
-				})
-				vim.cmd.colorscheme("gruvbox")
-				print("Background set to solid color #141414")
-			else
-				vim.g.transparent_mode = true
-				require("gruvbox").setup({
-					transparent_mode = true,
-					overrides = {
-						Normal = { bg = "none" },
-						NormalFloat = { bg = "none" },
-					},
-				})
-				vim.cmd.colorscheme("gruvbox")
-				print("Background set to transparent")
-			end
-		end
-
-		vim.keymap.set("n", "<leader>bg", toggle_background, { noremap = true, silent = true })
+		-- Set the colorscheme to rose-pine
+		vim.cmd("colorscheme rose-pine")
 	end,
 }
