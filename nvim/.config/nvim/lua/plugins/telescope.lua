@@ -1,13 +1,54 @@
-return   {
+return {
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.8',
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.8',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       local builtin = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-      vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-      vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+
+      -- Keymaps for Telescope
+      vim.keymap.set('n', '<leader>ff', builtin.find_files, {
+        noremap = true,
+        silent = true,
+        desc = 'Telescope: Find Files' -- Opens file finder
+      })
+
+      vim.keymap.set('n', '<leader>fg', builtin.live_grep, {
+        noremap = true,
+        silent = true,
+        desc = 'Telescope: Live Grep' -- Searches for text in project
+      })
+
+      vim.keymap.set('n', '<leader>fb', builtin.buffers, {
+        noremap = true,
+        silent = true,
+        desc = 'Telescope: Buffers' -- Lists open buffers for easy switching
+      })
+
+      vim.keymap.set('n', '<leader>fh', builtin.help_tags, {
+        noremap = true,
+        silent = true,
+        desc = 'Telescope: Help Tags' -- Opens help documentation finder
+      })
+
+      -- Additional buffer management keymaps
+      vim.keymap.set('n', '<leader>bd', ':bdelete<CR>', {
+        noremap = true,
+        silent = true,
+        desc = 'Buffer: Close Buffer' -- Closes the current buffer
+      })
+
+      vim.keymap.set('n', '<leader>bn', ':bnext<CR>', {
+        noremap = true,
+        silent = true,
+        desc = 'Buffer: Next Buffer' -- Switches to the next buffer
+      })
+
+      vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', {
+        noremap = true,
+        silent = true,
+        desc = 'Buffer: Previous Buffer' -- Switches to the previous buffer
+      })
     end
   },
   {
@@ -16,8 +57,7 @@ return   {
       require("telescope").setup {
         extensions = {
           ["ui-select"] = {
-            require("telescope.themes").get_dropdown {
-            }
+            require("telescope.themes").get_dropdown({})
           }
         }
       }
