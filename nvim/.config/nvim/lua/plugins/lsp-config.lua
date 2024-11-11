@@ -10,18 +10,18 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "lua_ls",       
-          "gopls",        
-          "ts_ls",     
-          "html",         
-          "cssls",        
-          "tailwindcss",  
-          "jsonls",       
-          "emmet_ls",     
-          "eslint",       
-          "bashls",       
-          "yamlls",       
-          "prismals",     
+          "lua_ls",
+          "gopls",
+          "ts_ls",
+          "html",
+          "cssls",
+          "tailwindcss",
+          "jsonls",
+          "emmet_ls",
+          "eslint",
+          "bashls",
+          "yamlls",
+          "prismals",
         }
       })
     end
@@ -33,18 +33,18 @@ return {
 
       lspconfig.lua_ls.setup({})
       lspconfig.gopls.setup({})
-      lspconfig.ts_ls.setup({})     
-      lspconfig.html.setup({})         
-      lspconfig.cssls.setup({})        
-      lspconfig.tailwindcss.setup({})  
-      lspconfig.jsonls.setup({})       
-      lspconfig.emmet_ls.setup({       
+      lspconfig.ts_ls.setup({})
+      lspconfig.html.setup({})
+      lspconfig.cssls.setup({})
+      lspconfig.tailwindcss.setup({})
+      lspconfig.jsonls.setup({})
+      lspconfig.emmet_ls.setup({
         filetypes = { "html", "css", "typescriptreact", "javascriptreact" }
       })
-      lspconfig.eslint.setup({})       
-      lspconfig.bashls.setup({})       
-      lspconfig.yamlls.setup({})       
-      lspconfig.prismals.setup({})     
+      lspconfig.eslint.setup({})
+      lspconfig.bashls.setup({})
+      lspconfig.yamlls.setup({})
+      lspconfig.prismals.setup({})
 
       -- Keymaps for LSP actions
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
