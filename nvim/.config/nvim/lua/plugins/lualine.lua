@@ -32,7 +32,19 @@ return {
 						},
 					},
 				},
-				lualine_x = { "filetype" },
+				lualine_x = {
+					"filetype",
+					{
+						"filename",
+						path = 1, -- 0: filename only, 1: relative path, 2: absolute path
+						symbols = {
+							modified = "[+]", -- Symbol for modified files
+							readonly = "[-]", -- Symbol for readonly files
+							unnamed = "[No Name]", -- Symbol for unnamed buffers
+						},
+						color = { fg = "#E0D6D7", bg = "#3E2E39" }, -- Customize color for the path display
+					},
+				},
 				lualine_y = { "progress" },
 				lualine_z = { "location" },
 			},
