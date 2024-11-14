@@ -12,6 +12,7 @@ vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.cursorline = true
+vim.opt.scrolloff = 15
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
