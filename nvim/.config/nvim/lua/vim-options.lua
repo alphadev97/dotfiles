@@ -31,6 +31,8 @@ vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
 
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 
+vim.keymap.set('n', '<leader>v', ':vsplit<CR>', { noremap = true, silent = true })  -- Vertical split
+vim.keymap.set('n', '<leader>s', ':split<CR>', { noremap = true, silent = true })   -- Horizontal split
 
 vim.o.foldcolumn = '1' -- '0' is not bad
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
