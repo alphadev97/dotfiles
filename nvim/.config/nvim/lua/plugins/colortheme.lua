@@ -5,7 +5,8 @@ return {
     require("rose-pine").setup({
       palette = {
         main = {
-            pine = '#d3f8a4',
+          pine = "#d3f8a4",
+          base = "#202021",
         },
       },
     })
