@@ -19,8 +19,11 @@ return {
 					},
 				},
 			},
-
-			vim.keymap.set("n", "<leader>ls", "<cmd>SessionSearch<CR>", { noremap = true, desc = "Session search" }),
 		})
+
+		-- Add keymaps
+		vim.keymap.set("n", "<leader>sl", "<cmd>SessionSearch<CR>", { noremap = true, desc = "List Sessions" }) -- List sessions
+		vim.keymap.set("n", "<leader>sd", "<cmd>SessionDelete<CR>", { noremap = true, desc = "Delete Current Session" }) -- Delete session
+		vim.keymap.set("n", "<leader>ss", "<cmd>SessionSave<CR>", { noremap = true, desc = "Save Current Session" }) -- Save session
 	end,
 }
