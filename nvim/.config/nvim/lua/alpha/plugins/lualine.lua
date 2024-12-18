@@ -2,11 +2,12 @@ return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
-    require("lualine").setup({
+    local lualine = require("lualine")
+    local lazy_status = require("lazy.status")
+
+    lualine.setup({
       options = {
         theme = "auto",
-        component_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
       },
       sections = {
         lualine_a = { "mode" },
@@ -17,7 +18,16 @@ return {
             path = 1, -- 0: just the filename, 1: relative path, 2: absolute path
           },
         },
-        lualine_x = { "encoding", "fileformat", "filetype" },
+        lualine_x = {
+          {
+            lazy_status.updates,
+            cond = lazy_status.has_updates,
+            color = { fg = "#ff9e64" },
+          },
+          { "encoding" },
+          { "fileformat" },
+          { "filetype" },
+        },
         lualine_y = { "progress" },
         lualine_z = { "location" },
       },
