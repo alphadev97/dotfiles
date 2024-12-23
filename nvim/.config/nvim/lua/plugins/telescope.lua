@@ -1,73 +1,53 @@
 return {
-	{
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			{
-				"nvim-telescope/telescope-fzf-native.nvim",
-				build = "make",
-			},
-		},
-		config = function()
-			local builtin = require("telescope.builtin")
+  {
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.8",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+      },
+       "folke/todo-comments.nvim",
+    },
 
-			-- Keymaps for Telescope
-			vim.keymap.set("n", "<leader>ff", builtin.find_files, {
-				noremap = true,
-				silent = true,
-				desc = "Telescope: Find Files", -- Opens file finder
-			})
+    config = function()
+      local telescope = require("telescope")
 
-			vim.keymap.set("n", "<leader>fg", builtin.live_grep, {
-				noremap = true,
-				silent = true,
-				desc = "Telescope: Live Grep", -- Searches for text in project
-			})
+      telescope.load_extension("fzf")
 
-			vim.keymap.set("n", "<leader>fb", builtin.buffers, {
-				noremap = true,
-				silent = true,
-				desc = "Telescope: Buffers", -- Lists open buffers for easy switching
-			})
+      local keymap = vim.keymap
 
-			vim.keymap.set("n", "<leader>fh", builtin.help_tags, {
-				noremap = true,
-				silent = true,
-				desc = "Telescope: Help Tags", -- Opens help documentation finder
-			})
-
-			-- Additional buffer management keymaps
-			vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", {
-				noremap = true,
-				silent = true,
-				desc = "Buffer: Close Buffer", -- Closes the current buffer
-			})
-
-			vim.keymap.set("n", "<leader>b]", ":bnext<CR>", {
-				noremap = true,
-				silent = true,
-				desc = "Buffer: Next Buffer", -- Switches to the next buffer
-			})
-
-			vim.keymap.set("n", "<leader>b[", ":bprevious<CR>", {
-				noremap = true,
-				silent = true,
-				desc = "Buffer: Previous Buffer", -- Switches to the previous buffer
-			})
-		end,
-	},
-	{
-		"nvim-telescope/telescope-ui-select.nvim",
-		config = function()
-			require("telescope").setup({
-				extensions = {
-					["ui-select"] = {
-						require("telescope.themes").get_dropdown({}),
-					},
-				},
-			})
-			require("telescope").load_extension("ui-select")
-		end,
-	},
+      keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
+      keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
+      keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
+      keymap.set(
+        "n",
+        "<leader>fs",
+        "<cmd>Telescope grep_string<cr>",
+        { desc = "Find string under cursor in cwd" }
+      )
+      keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find open buffers" })
+      keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Search help tags" })
+      keymap.set("n", "<leader>fbf", "<cmd>Telescope file_browser<cr>", { desc = "Browse files" })
+      keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "Search keymaps" })
+      keymap.set("n", "<leader>fc", "<cmd>Telescope commands<cr>", { desc = "Search commands" })
+      keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>", { desc = "Search diagnostics" })
+      keymap.set("n", "<leader>fp", "<cmd>Telescope resume<cr>", { desc = "Resume last picker" })
+      keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+    end,
+  },
+  {
+    "nvim-telescope/telescope-ui-select.nvim",
+    config = function()
+      require("telescope").setup({
+        extensions = {
+          ["ui-select"] = {
+            require("telescope.themes").get_dropdown({}),
+          },
+        },
+      })
+      require("telescope").load_extension("ui-select")
+    end,
+  },
 }
