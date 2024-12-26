@@ -1,5 +1,6 @@
 return {
   "akinsho/bufferline.nvim",
+  event = "VeryLazy",
   version = "*",
   dependencies = "nvim-tree/nvim-web-devicons",
   config = function()
@@ -23,34 +24,24 @@ return {
 
     -- Keymaps for interacting with buffers using 'b' prefix
     local keymap = vim.keymap
-    local opts = { noremap = true, silent = true }
 
-    -- Register keymaps with descriptions for which-key
-    opts.desc = "Switch to next buffer"
-    keymap.set("n", "bn", ":BufferLineCycleNext<CR>", opts)
+    keymap.set("n", "bn", ":BufferLineCycleNext<CR>", { desc = "Switch to next buffer" })
 
-    opts.desc = "Switch to previous buffer"
-    keymap.set("n", "bp", ":BufferLineCyclePrev<CR>", opts)
+    keymap.set("n", "bp", ":BufferLineCyclePrev<CR>", { desc = "Switch to previous buffer" })
 
     -- Go to buffer 1 to 9
     for i = 1, 9 do
-      opts.desc = "Switch to buffer " .. i
-      keymap.set("n", "b" .. i, ":BufferLineGoToBuffer " .. i .. "<CR>", opts)
+      keymap.set("n", "b" .. i, ":BufferLineGoToBuffer " .. i .. "<CR>", { desc = "Switch to buffer " })
     end
 
-    opts.desc = "Close the current buffer"
-    keymap.set("n", "bb", ":bd<CR>", opts)
+    keymap.set("n", "bb", ":bd<CR>", { desc = "Close the current buffer" })
 
-    opts.desc = "Close all buffers"
-    keymap.set("n", "bB", ":BufferLinePickClose<CR>", opts)
+    keymap.set("n", "bd", ":BufferLinePickClose<CR>", { desc = "Close all buffers" })
 
-    opts.desc = "Pick a buffer to switch to"
-    keymap.set("n", "bp", ":BufferLinePick<CR>", opts)
+    keymap.set("n", "bp", ":BufferLinePick<CR>", { desc = "Pick a buffer to switch to" })
 
-    opts.desc = "Re-order buffers right"
-    keymap.set("n", "br", ":BufferLineMoveNext<CR>", opts)
+    keymap.set("n", "br", ":BufferLineMoveNext<CR>", { desc = "Re-order buffers right" })
 
-    opts.desc = "Re-order buffers left"
-    keymap.set("n", "bl", ":BufferLineMovePrev<CR>", opts)
+    keymap.set("n", "bl", ":BufferLineMovePrev<CR>", { desc = "Re-order buffers left" })
   end,
 }
