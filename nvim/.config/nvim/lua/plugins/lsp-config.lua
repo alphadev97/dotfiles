@@ -23,6 +23,8 @@ return {
           "yamlls",
           "prismals",
           "sqlls",
+          "pyright",  -- Python LSP
+          "rust_analyzer", -- Rust LSP
         },
       })
     end,
@@ -130,6 +132,24 @@ return {
             on_attach = on_attach,
           })
         end,
+        ["pyright"] = function()
+          lspconfig.pyright.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+          })
+        end,
+        ["rust_analyzer"] = function()
+          lspconfig.rust_analyzer.setup({
+            capabilities = capabilities,
+            settings = {
+              ["rust-analyzer"] = {
+                cargo = { allFeatures = true },
+                checkOnSave = { command = "clippy" },
+              },
+            },
+            on_attach = on_attach,
+          })
+        end,
       })
 
       -- Installing auto
@@ -140,6 +160,10 @@ return {
           "goimports",
           "golangci-lint",
           "sql-formatter",
+          "black", -- Python formatter
+          "mypy", -- Python type checker
+          "ruff", -- Python linter
+          "rustfmt", -- Rust formatter
         },
       })
     end,
