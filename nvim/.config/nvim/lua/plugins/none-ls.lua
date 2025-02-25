@@ -6,6 +6,12 @@ return {
 
     null_ls.setup({
       sources = {
+        -- Python formatters
+        null_ls.builtins.formatting.black, -- Black (recommended)
+        null_ls.builtins.formatting.isort, -- Sort imports
+        -- null_ls.builtins.formatting.autopep8,  -- Alternative (not needed if using black)
+
+        -- Other formatters
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.prettierd,
         null_ls.builtins.formatting.goimports,
