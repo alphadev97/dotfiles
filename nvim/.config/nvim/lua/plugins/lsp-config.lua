@@ -11,13 +11,13 @@ return {
       require("mason-lspconfig").setup({
         ensure_installed = {
           "lua_ls",
-          "emmet_ls",
           "gopls",
           "ts_ls",
           "html",
           "cssls",
           "tailwindcss",
           "jsonls",
+          "emmet_ls",
         },
       })
     end,
@@ -37,13 +37,28 @@ return {
         capabilities = capabilities,
       })
 
-      lspconfig.ts_ls.setup({
+      lspconfig.emmet_ls.setup({
         capabilities = capabilities,
         filetypes = {
+          "css",
+          "eruby",
+          "html",
           "javascript",
+          "javascriptreact",
           "typescript",
+          "typescriptreact",
+          "less",
+          "sass",
+          "scss",
+          "svelte",
+          "pug",
           "vue",
         },
+      })
+
+      lspconfig.ts_ls.setup({
+        capabilities = capabilities,
+        filetypes = { "javascript", "typescript", "typescriptreact", "javascriptreact", "vue" },
       })
 
       lspconfig.gopls.setup({
