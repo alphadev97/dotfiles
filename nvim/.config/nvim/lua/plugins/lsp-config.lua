@@ -18,6 +18,7 @@ return {
           "tailwindcss",
           "jsonls",
           "emmet_ls",
+          "pyright",
         },
       })
     end,
@@ -62,6 +63,10 @@ return {
       })
 
       lspconfig.gopls.setup({
+        capabilities = capabilities,
+      })
+
+      lspconfig.pyright.setup({
         capabilities = capabilities,
       })
 
